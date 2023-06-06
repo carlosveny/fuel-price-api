@@ -10,7 +10,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "node ./src/scripts/update-server.js fuel-price-api"
+    "deploy": "node ./src/scripts/update-server.js fuel-price-api",
+    "start": "node ./src/app/index.js"
   },
   "author": "Carlos Veny",
   "license": "ISC"
