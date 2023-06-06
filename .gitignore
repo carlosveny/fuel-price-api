@@ -1,1 +1,4 @@
 /node_modules
+
+# Sensitive data
+/src/scripts/update-server.js
