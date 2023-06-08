@@ -6,7 +6,7 @@ const FUEL_STATIONS_URL = 'https://sedeaplicaciones.minetur.gob.es/ServiciosREST
 const EESS_IDS = ['2651']
 
 APP.get('/', (req, res) => {
-  res.send('hola funciona4')
+  res.send('hola funciona5')
 })
 
 
