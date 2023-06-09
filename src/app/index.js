@@ -4,14 +4,14 @@ const axios = require('axios')
 const APP = express()
 const PORT = 3000
 const FUEL_STATIONS_URL = 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/'
-const EESS_IDS = ['2651']
+const EESS_IDS = ['2651', '11560']
 
 APP.get('/', (req, res) => {
   axios.get(FUEL_STATIONS_URL).then(response => {
     const fuelStationsList = response.data.ListaEESSPrecio
-    console.log(fuelStationsList[0])
-    res.send(fuelStationsList[0])
-    return
+    const filteredFuelStations = fuelStationsList.filter(fuelStation => EESS_IDS.includes(fuelStation.IDEESS))
+    console.log(filteredFuelStations)
+    res.send(filteredFuelStations.map(fuelStation => converterToFuelStationDto(fuelStation)))
   })
 })
 
@@ -19,3 +19,25 @@ APP.get('/', (req, res) => {
 APP.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })
+
+function converterToFuelStationDto(fuelStationBase) {
+  return {
+    zipCode: fuelStationBase['C.P.'],
+    address: fuelStationBase['Dirección'],
+    brand: fuelStationBase['Rótulo'],
+    schedule: fuelStationBase.Horario,
+    latitude: fuelStationBase.Latitud,
+    longitude: fuelStationBase['Longitud (WGS84)'],
+    city: fuelStationBase.Localidad,
+    municipality: fuelStationBase.Municipio,
+    province: fuelStationBase.Provincia,
+    idEESS: fuelStationBase.IDEESS,
+    idMunicipality: fuelStationBase.IDMunicipio,
+    idProvince: fuelStationBase.IDProvincia,
+    idCCAA: fuelStationBase.IDCCAA,
+    priceDiesel: fuelStationBase['Precio Gasoleo A'],
+    priceDieselPremium: fuelStationBase['Precio Gasoleo Premium'],
+    pricePetrol95: fuelStationBase['Precio Gasolina 95 E5'],
+    pricePetrol98: fuelStationBase['Precio Gasolina 98 E5'],
+  }
+}
