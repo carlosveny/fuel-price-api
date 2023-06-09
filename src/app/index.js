@@ -22,15 +22,15 @@ APP.listen(PORT, () => {
 
 function converterToFuelStationDto(fuelStationBase) {
   return {
-    zipCode: fuelStationBase['C.P.'],
     address: fuelStationBase['Dirección'],
-    brand: fuelStationBase['Rótulo'],
-    schedule: fuelStationBase.Horario,
-    latitude: fuelStationBase.Latitud,
-    longitude: fuelStationBase['Longitud (WGS84)'],
+    zipCode: fuelStationBase['C.P.'],
     city: fuelStationBase.Localidad,
     municipality: fuelStationBase.Municipio,
     province: fuelStationBase.Provincia,
+    latitude: fuelStationBase.Latitud,
+    longitude: fuelStationBase['Longitud (WGS84)'],
+    brand: fuelStationBase['Rótulo'],
+    schedule: fuelStationBase.Horario,
     idEESS: fuelStationBase.IDEESS,
     idMunicipality: fuelStationBase.IDMunicipio,
     idProvince: fuelStationBase.IDProvincia,
