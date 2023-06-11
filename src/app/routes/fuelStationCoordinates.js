@@ -3,8 +3,8 @@ const common = require('../common.js');
 module.exports = (APP => {
   () => { },
     APP.get('/fuelStationCoordinates', (req, res) => {
-      const actualLat = parseFloat(req.body.latitude)
-      const actualLong = parseFloat(req.body.longitude)
+      const actualLat = parseFloat(req.query.latitude)
+      const actualLong = parseFloat(req.query.longitude)
       if (!actualLat || !actualLong) {
         common.sendError(res, 500, 'Missing or incorrect parameter latitude or longitude')
         return

@@ -3,7 +3,7 @@ const common = require('../common.js');
 module.exports = (APP => {
   () => { },
     APP.get('/fuelStationId/:id', (req, res) => getFuelStationsByIds([req.params.id], res)),
-    APP.get('/fuelStationId', (req, res) => getFuelStationsByIds(req.body.fuelStationIds?.map(id => id.toString()), res))
+    APP.post('/fuelStationId', (req, res) => getFuelStationsByIds(req.body.fuelStationIds?.map(id => id.toString()), res))
 })
 
 function getFuelStationsByIds(fuelStationsIds, serverResponse) {
