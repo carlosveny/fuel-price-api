@@ -29,4 +29,5 @@ Pasos para instalar y ejecutar la API.
 | /fuelStationId/:id | GET | None | None | Obtener gasolinera por ID |
 | /fuelStationId | POST | None | `{"fuelStationIds": [1, 2]}` | Obtener gasolineras por ID |
 | fuelStationCoordinates | GET | `?latitude=XX&longitude=XX` | None | Obtener gasolinera más cercana |
+
 Para consultar los IDs de las gasolineras se puede realizar una petición GET al siguiente endpoint público: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/
